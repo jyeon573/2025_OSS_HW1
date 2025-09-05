@@ -1,11 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Developer Sample — Dayeon Jung (22400661)</title>
+  <meta name="description" content="AI-generated developer sample page (assignment)" />
+  <style>
+    :root {
+      /* Cupertino-inspired light palette */
+      --bg: #f5f5f7;
+      --panel: #ffffff;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --brand: #0a84ff;
+      --brand-2: #5856d6;
+      --border: #d2d2d7;
+      --code-bg: #f2f2f7;
+      --shadow: 0 8px 24px rgba(0,0,0,.06);
+    }
+    [data-theme="dark"] {
+      --bg: #000000;
+      --panel: #111111;
+      --text: #fafafa;
+      --muted: #b0b0b4;
+      --brand: #0a84ff;
+      --brand-2: #64d2ff;
+      --border: #2c2c2e;
+      --code-bg: #1c1c1e;
+      --shadow: 0 16px 40px rgba(0,0,0,.55);
+    }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { width: min(1040px, 92%); margin: 0 auto; }
+
+    header { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(140%) blur(14px); background: color-mix(in hsl, var(--panel), transparent 35%); border-bottom: 1px solid var(--border); }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: .2px; }
+    .logo { width: 28px; height: 28px; border-radius: 7px; background: linear-gradient(180deg, #0a84ff, #0077ed); box-shadow: inset 0 0 0 0.5px rgba(255,255,255,.35), 0 2px 8px rgba(0,0,0,.08); display: grid; place-items: center; font-size: 14px; color: white; font-weight: 800; }
+    nav a { color: var(--muted); text-decoration: none; margin-left: 18px; font-weight: 600; }
+    nav a:hover { color: var(--text); }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border: 1px solid var(--border); border-radius: 12px; color: var(--text); text-decoration: none; font-weight: 600; background: var(--panel); box-shadow: var(--shadow); }
+    .btn:hover { border-color: color-mix(in hsl, var(--brand), var(--border) 70%); box-shadow: 0 8px 20px rgba(0,0,0,.08); }
+
+    .hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 28px; align-items: center; padding: 56px 0; }
+    .hero h1 { font-size: clamp(28px, 5vw, 44px); line-height: 1.12; margin: 0 0 10px; letter-spacing: -.2px; }
+    .hero p { color: var(--muted); margin: 0 0 22px; }
+    .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+    .pill { padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); font-size: 13px; background: var(--panel); }
+    .avatar { aspect-ratio: 1; border-radius: 20px; background: linear-gradient(180deg, #e9f2ff, #f5f5f7); position: relative; box-shadow: var(--shadow); }
+    .avatar::after { content: ""; position: absolute; inset: 8px; border-radius: 16px; background: var(--panel); box-shadow: inset 0 0 0 1px var(--border); }
+
+    section { padding: 28px 0 8px; }
+    .section-title { font-size: 20px; margin: 8px 0 18px; letter-spacing: .2px; }
+    .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 18px; padding: 18px; box-shadow: var(--shadow); }
+
+    .grid { display: grid; gap: 16px; grid-template-columns: repeat(12, 1fr); }
+    .card { grid-column: span 6; background: var(--panel); border: 1px solid var(--border); border-radius: 18px; padding: 16px; transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
+    .card:hover { transform: translateY(-1px); border-color: color-mix(in hsl, var(--brand), var(--border) 70%); box-shadow: 0 10px 28px rgba(0,0,0,.08); }
+    .card h3 { margin: 6px 0 6px; font-size: 18px; letter-spacing: .1px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .tag { font-size: 12px; padding: 6px 10px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); background: #fafafa; }
+
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skill { padding: 8px 12px; border-radius: 12px; border: 1px solid var(--border); background: #fafafa; }
+
+    pre { background: var(--code-bg); color: var(--text); padding: 14px; border-radius: 12px; overflow-x: auto; border: 1px solid var(--border); box-shadow: var(--shadow); }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 13px; }
+
+    footer { margin: 32px 0 60px; color: var(--muted); font-size: 14px; }
+
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; }
+      .card { grid-column: span 12; }
+    }
+  </style>
 </head>
 <body>
-    <h1>Hello World!!!</h1>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">&lt;/&gt;</div>
+        <span>Dayeon Jung’s Developer Page <small style="opacity:.6; font-weight:600">(22400661)</small></span>
+      </div>
+      <nav aria-label="Main links">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+        <button class="btn" id="themeToggle" type="button" aria-pressed="false" aria-label="Theme toggle">🌓 Theme</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="home">
+      <div>
+        <div class="pill">AI-generated · Single file · Assignment</div>
+        <h1>Hello, I am <span style="color:var(--brand)">Dayeon Jung</span> <span style="font-size:26px">👋</span></h1>
+        <p>I am a frontend learner (HTML · CSS · JavaScript). This page is a <strong>ChatGPT</strong>-generated developer sample, deployed via Netlify.</p>
+        <div class="cta">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="btn" href="#assign-links">Assignment Links</a>
+        </div>
+      </div>
+      <div class="avatar" role="img" aria-label="Decorative avatar graphic"></div>
+    </section>
+
+    <section aria-labelledby="about-title">
+      <h2 id="about-title" class="section-title">About & Code Sample</h2>
+      <div class="panel">
+        <p>The basics of the web are <em>accessibility</em> and <em>semantic markup</em>. This page uses <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, etc. Below is a short JavaScript snippet:</p>
+        <pre><code>// Greeting based on current time
+function greeting(name) {
+  const h = new Date().getHours();
+  if (h < 12) return `Good morning, ${name}!`;
+  if (h < 18) return `Good afternoon, ${name}!`;
+  return `Good evening, ${name}!`;
+}
+console.log(greeting("Dayeon Jung"));</code></pre>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title" class="section-title">Projects</h2>
+      <div class="grid">
+        <article class="card" aria-labelledby="p1-title">
+          <h3 id="p1-title">W3Schools Demo Style (style1.html)</h3>
+          <p>Based on W3Schools Stylesheet demo, extended from <strong>nostyle.html</strong> to style1.</p>
+          <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Semantic</span></div>
+          <p><a class="btn" href="style1.html">Open</a></p>
+        </article>
+        <article class="card" aria-labelledby="p2-title">
+          <h3 id="p2-title">W3Schools Demo Style (style2.html)</h3>
+          <p>Another stylesheet demo theme applied as the second styled page.</p>
+          <div class="tags"><span class="tag">Flex/Grid</span><span class="tag">Typography</span></div>
+          <p><a class="btn" href="style2.html">Open</a></p>
+        </article>
+        <article class="card" aria-labelledby="p3-title">
+          <h3 id="p3-title">Bootstrap Example (example.html)</h3>
+          <p>One Bootstrap official example recreated with similar layout and style.</p>
+          <div class="tags"><span class="tag">Bootstrap</span><span class="tag">Responsive</span></div>
+          <p><a class="btn" href="example.html">Open</a></p>
+        </article>
+        <article class="card" aria-labelledby="p4-title">
+          <h3 id="p4-title">Basic Structure Page (nostyle.html)</h3>
+          <p>Plain HTML without styles. Title changed to <em>Welcome to Dayeon Jung’s Homepage (22400661)</em>.</p>
+          <div class="tags"><span class="tag">No CSS</span><span class="tag">Structure</span></div>
+          <p><a class="btn" href="nostyle.html">Open</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-title">
+      <h2 id="skills-title" class="section-title">Skills</h2>
+      <div class="panel">
+        <div class="skills" role="list">
+          <span class="skill" role="listitem">HTML5</span>
+          <span class="skill" role="listitem">CSS3 / Flex / Grid</span>
+          <span class="skill" role="listitem">JavaScript (ES6)</span>
+          <span class="skill" role="listitem">Git / GitHub</span>
+          <span class="skill" role="listitem">Netlify</span>
+          <span class="skill" role="listitem">Bootstrap 5</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="assign-links" aria-labelledby="assign-title">
+      <h2 id="assign-title" class="section-title">Assignment Links</h2>
+      <div class="panel">
+        <ul>
+          <li><a href="nostyle.html">nostyle.html</a></li>
+          <li><a href="style1.html">style1.html</a></li>
+          <li><a href="style2.html">style2.html</a></li>
+          <li><a href="example.html">example.html</a></li>
+          <li><a href="README.md">README.md (on GitHub)</a></li>
+        </ul>
+        <p style="color:var(--muted); margin:.2rem 0 0">These files must exist in the repository for the links to work.</p>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title" class="section-title">Contact</h2>
+      <div class="panel">
+        <p>Feel free to reach out:</p>
+        <p>
+          📧 <a href="mailto:you@example.com">you@example.com</a>
+          &nbsp;·&nbsp; 🐙 <a href="https://github.com/your-id" target="_blank" rel="noopener">github.com/your-id</a>
+          &nbsp;·&nbsp; 🌐 <a href="https://your-site.netlify.app" target="_blank" rel="noopener">Netlify Site</a>
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <p>© <span id="year"></span> Dayeon Jung (22400661) — Built with HTML/CSS/JS · Deployed on Netlify</p>
+    </footer>
+  </main>
+
+  <script>
+    const root = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('theme');
+    if (!saved) {
+      root.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+    } else {
+      root.setAttribute('data-theme', saved);
+      btn?.setAttribute('aria-pressed', String(saved === 'dark'));
+    }
+    btn?.addEventListener('click', () => {
+      const isDark = root.getAttribute('data-theme') === 'dark';
+      const next = isDark ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      btn.setAttribute('aria-pressed', String(next === 'dark'));
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
