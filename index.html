@@ -14,9 +14,7 @@
             --text: #d4d4d4;
             --muted: #a0a0a0;
             --brand: #569cd6;
-            /* blue */
             --brand-2: #c586c0;
-            /* pink */
             --accent-green: #6a9955;
             --border: #3c3c3c;
             --shadow: 0 4px 12px rgba(0, 0, 0, .5);
@@ -114,11 +112,7 @@
         }
 
         .hero {
-            display: grid;
-            grid-template-columns: 1.2fr .8fr;
-            gap: 28px;
-            align-items: center;
-            padding: 120px 0 56px;
+            padding: 80px 0 40px;
             position: relative;
         }
 
@@ -157,20 +151,23 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            /* 간격 넓힘 */
             gap: 20px;
         }
 
-        .avatar {
-            width: 1900px;
-            height: 250px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--brand);
-            box-shadow: var(--shadow);
+        .about>div {
+            flex: 1;
         }
 
-
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--brand);
+            box-shadow: var(--shadow);
+            margin-left: auto;
+            flex: 0 0 auto;
+        }
 
         section {
             padding: 28px 0 8px;
@@ -239,9 +236,31 @@
         }
 
         @media (max-width: 860px) {
-            .hero {
-                grid-template-columns: 1fr;
+            .about {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 20px;
             }
+
+            .about>div {
+                flex: 1;
+                /* 텍스트는 가변 */
+            }
+
+            .avatar {
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 1px solid white;
+                box-shadow: var(--shadow);
+                margin-left: 20px;
+                /* 글과 간격 */
+                flex: 0 0 auto;
+                /* 크기 고정 */
+            }
+
 
             .card {
                 grid-column: span 12;
@@ -267,22 +286,21 @@
     </header>
 
     <main class="container">
-        <section id="intro">
+        <section id="intro" class="hero">
             <h2 class="section-title">Who I Am</h2>
             <div class="about">
-                <!-- Intro text -->
+                <!-- Intro text 왼쪽 -->
                 <div>
                     <p>I was born on July 3, 2005, and I’m currently a sophomore at Handong Global University.
-                        I study Computer Science & Electrical Engineering (CS track), with a focus on learning the
-                        basics of frontend development using HTML, CSS, and JavaScript.
-                        This page is part of my coursework and also a small step toward building my own portfolio.</p>
+                        I study Computer Science & Electrical Engineering (CS track), focusing on frontend basics with
+                        HTML, CSS,
+                        and JavaScript.
+                        This page is part of my coursework and also a small step toward building my portfolio.</p>
                 </div>
-                <!-- Profile image -->
+                <!-- Profile image 오른쪽 -->
                 <img class="avatar" src="profile_pic.jpg" alt="Photo of Dayeon Jung" />
             </div>
         </section>
-
-    
 
 
         <section id="course">
@@ -342,7 +360,6 @@
             </div>
         </section>
 
-
         <section id="projects">
             <h2 class="section-title">Stuff I Built</h2>
             <div class="grid">
@@ -359,10 +376,10 @@
                     <p><a class="btn" href="style1.html">Open</a></p>
                 </article>
                 <article class="card">
-                    <h3>style4.html</h3>
+                    <h3>style2.html</h3>
                     <p>A second theme experiment with different typography and layout.</p>
                     <div class="tags"><span class="tag">CSS</span></div>
-                    <p><a class="btn" href="style4.html">Open</a></p>
+                    <p><a class="btn" href="style2.html">Open</a></p>
                 </article>
                 <article class="card">
                     <h3>example.html</h3>
