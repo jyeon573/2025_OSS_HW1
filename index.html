@@ -153,12 +153,24 @@
             background: #2d2d2d;
         }
 
+        .about {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* 간격 넓힘 */
+            gap: 20px;
+        }
+
         .avatar {
-            aspect-ratio: 1;
-            border-radius: 8px;
-            background: #2d2d2d;
+            width: 1900px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--brand);
             box-shadow: var(--shadow);
         }
+
+
 
         section {
             padding: 28px 0 8px;
@@ -255,27 +267,81 @@
     </header>
 
     <main class="container">
-        <section class="hero" id="intro">
-            <div>
-                <div class="pill">OSS Assignment · Single HTML File</div>
-                <h1>Hi, I’m <span style="color:var(--brand)">Dayeon Jung</span> 👋</h1>
-                <p>I was born on July 3, 2005, and I’m currently a sophomore at Handong Global University.
-                    My focus is on computer science, especially learning the basics of frontend development with HTML,
-                    CSS, and JavaScript.
-                    This page is part of my coursework and also a small step toward building my own portfolio.</p>
+        <section id="intro">
+            <h2 class="section-title">Who I Am</h2>
+            <div class="about">
+                <!-- Intro text -->
+                <div>
+                    <p>I was born on July 3, 2005, and I’m currently a sophomore at Handong Global University.
+                        I study Computer Science & Electrical Engineering (CS track), with a focus on learning the
+                        basics of frontend development using HTML, CSS, and JavaScript.
+                        This page is part of my coursework and also a small step toward building my own portfolio.</p>
+                </div>
+                <!-- Profile image -->
+                <img class="avatar" src="profile_pic.jpg" alt="Photo of Dayeon Jung" />
             </div>
-            <div class="avatar"></div>
         </section>
+
+    
+
 
         <section id="course">
             <h2 class="section-title">Class Info</h2>
             <div class="panel">
-                <p>This portfolio is part of Professor Soyeon Jang’s block-plan course: <strong>Open Source Studio & Web
-                        Service Development</strong>.</p>
-                <p>I’m currently focused on building a strong foundation in software and web
-                    development.</p>
+                <p>This portfolio is part of Professor Soyeon Jang’s block-plan course:
+                    <strong>Open Source Studio & Web Service Development</strong>.
+                    The assignment focuses on setting up the environment, practicing HTML/CSS,
+                    and deploying a working site through GitHub and Netlify.
+                </p>
+
+                <h3>Tasks</h3>
+                <ul>
+                    <li>Set up the development environment and free hosting service
+                        <ul>
+                            <li>Install Visual Studio Code</li>
+                            <li>Create a new project</li>
+                            <li>Install at least 3 useful extensions (e.g. HTML snippets)</li>
+                            <li>Connect project with Git and GitHub repository</li>
+                            <li>Sign up on Netlify, import GitHub project, deploy, and confirm service works</li>
+                            <li>Edit in VS Code → push to GitHub → confirm deployment on Netlify URL</li>
+                        </ul>
+                    </li>
+                    <li>Practice HTML/CSS
+                        <ul>
+                            <li>Use an AI tool (e.g. ChatGPT) to generate a sample developer page → save as
+                                <code>index.html</code>
+                            </li>
+                            <li>Create <code>nostyle.html</code> by referencing W3Schools demo pages</li>
+                            <li>Modify top title to <em>Welcome to [Name]’s Homepage (Student ID)</em></li>
+                            <li>Choose 2 stylesheet demos (style1, style2) and recreate them using CSS</li>
+                            <li>Recreate one official Bootstrap example → save as <code>example.html</code></li>
+                            <li>Link all pages (<code>nostyle.html</code>, <code>style1.html</code>,
+                                <code>style2.html</code>, <code>example.html</code>) from <code>index.html</code>
+                            </li>
+                            <li>Push all files to GitHub with version control</li>
+                            <li>Write a README.md with the Netlify deploy URL</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>Self-Check</h3>
+                <ul>
+                    <li>Have at least 3 VS Code extensions for frontend development been installed?</li>
+                    <li>Is the GitHub repository correctly linked to the classroom assignment?</li>
+                    <li>What is the URL of your deployed Netlify site?</li>
+                    <li>Are the following pages implemented and deployed?
+                        <ul>
+                            <li><code>index.html</code> — must contain links to all other pages</li>
+                            <li><code>nostyle.html</code>, <code>style1.html</code>, <code>style2.html</code>,
+                                <code>example.html</code>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>What are your reflections, difficulties, or suggestions while doing this project?</li>
+                </ul>
             </div>
         </section>
+
 
         <section id="projects">
             <h2 class="section-title">Stuff I Built</h2>
