@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Masonry example (no external libs)</title>
+  <style>
+    /* Base */
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #21252b;   /* 요청 배경색 */
+      color: #e6e6e6;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: #9ecbff; text-decoration: underline; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 48px 20px; }
+    h1 { margin: 0 0 8px; }
+    .lead { margin: 0 0 16px; color: #b9bec7; }
+    hr { border: 0; border-top: 1px solid #3a3f46; margin: 28px 0; }
+
+    /* 코드 라인 박스 */
+    .snippet {
+      background: #1b1f24;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 14px 16px;
+      overflow: auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color: #ffffff;
+      font-size: .95rem;
+    }
+    .snippet code { white-space: pre; }
+
+    .progress{
+      --value: .48;          /* 진행률(0~1). 스샷처럼 48% */
+      height: 14px;
+      border-radius: 9999px;
+      background: #31363c;
+      box-shadow:
+        inset 0 1px 2px rgba(0,0,0,.55),
+        inset 0 0 0 1px rgba(255,255,255,.03);
+      overflow: hidden;
+      position: relative;
+    }
+    .progress .bar{
+      width: calc(var(--value) * 100%);
+      height: 100%;
+      border-radius: 9999px;
+      background: linear-gradient(180deg,#c7cbd1,#aeb4bc);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.25),
+        0 0 0 1px rgba(0,0,0,.15);
+    }
+
+    /* Masonry(순수 CSS columns로 근사) */
+    .grid { column-gap: 20px; }
+    @media (min-width:0px)   { .grid { column-count: 1; } }
+    @media (min-width:576px) { .grid { column-count: 2; } }
+    @media (min-width:992px) { .grid { column-count: 3; } }
+
+    .grid-item{
+      display: inline-block;
+      width: 100%;
+      background: #2c313a;
+      border-radius: 10px;
+      margin: 0 0 20px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,.35);
+      color: #d9dee6;
+    }
+    .grid-item img{ display:block; width:100%; height:auto; }
+    .card-body{ padding:16px; }
+    .card-title{ margin:0 0 10px; font-size:1.08rem; color:#fff; }
+    .card-text{ margin:0 0 10px; color:#bfc5ce; }
+    .small{ opacity:.85; font-size:.85rem; }
+    .text-center{ text-align:center; }
+    .text-end{ text-align:right; }
+
+    /* 회색 placeholder(원본 예제의 SVG 느낌) */
+    .ph{
+      width: 100%;
+      background: #868e96;
+      color: #dee2e6;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 600; letter-spacing: .2px;
+    }
+    .ph.h200{ height:200px; }
+    .ph.h260{ height:260px; }
+
+    /* 파란 카드(원본의 text-bg-primary 카드 느낌) */
+    .quote-card{
+      background:#0d6efd; color:#fff; padding:20px;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1>Bootstrap and Masonry</h1>
+    <p class="lead">
+      Integrate <a href="https://masonry.desandro.com/" target="_blank" rel="noopener">Masonry</a> with the grid system and cards component.
+    </p>
+    <p>
+      Masonry is not included in Bootstrap. Add it by including the JavaScript plugin manually, or using a CDN like so:
+    </p>
+
+    <!-- 코드 줄 -->
+    <div class="snippet" aria-label="Include Masonry via CDN (text only)">
+<code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js&quot; async&gt;&lt;/script&gt;</code>
+    </div>
+
+    <p>
+      By adding <code>data-masonry='{"percentPosition": true }'</code> to the <code>.row</code> wrapper, we can combine the powers of a responsive grid and Masonry’s positioning.
+    </p>
+
+    <hr class="my-5" />
+
+    <!-- Masonry-like grid (8개 카드) -->
+    <div class="grid">
+      <!-- 1 -->
+      <div class="grid-item">
+        <div class="ph h200">Image cap</div>
+        <div class="card-body">
+          <h5 class="card-title">Card title that wraps to a new line</h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="grid-item">
+        <div class="card-body">
+          <blockquote class="card-text" style="font-style:italic;margin:0">A well-known quote, contained in a blockquote element.</blockquote>
+          <div class="small">Someone famous in <cite>Source Title</cite></div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="grid-item">
+        <div class="ph h200">Image cap</div>
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          <p class="small">Last updated 3 mins ago</p>
+        </div>
+      </div>
+
+      <!-- 4 (파란 카드) -->
+      <div class="grid-item text-center">
+        <div class="quote-card">
+          <blockquote style="font-style:italic;margin:0">A well-known quote, contained in a blockquote element.</blockquote>
+          <div class="small" style="margin-top:8px;">Someone famous in <cite>Source Title</cite></div>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="grid-item text-center">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This card has a regular title and short paragraph of text below it.</p>
+          <p class="small">Last updated 3 mins ago</p>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="grid-item">
+        <div class="ph h260">Card image</div>
+      </div>
+
+      <!-- 7 -->
+      <div class="grid-item text-end">
+        <div class="card-body">
+          <blockquote style="font-style:italic;margin:0">A well-known quote, contained in a blockquote element.</blockquote>
+          <div class="small">Someone famous in <cite>Source Title</cite></div>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="grid-item">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is another card with title and supporting text below. This card has some additional content to make it slightly taller overall.</p>
+          <p class="small">Last updated 3 mins ago</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
