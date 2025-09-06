@@ -49,9 +49,19 @@
             border: 1px solid #ddd;
             border-radius: 6px;
             padding: 4px 12px;
+            color: black;
+        }
+        #left .item:hover{
+        background:#fff;
         }
 
         #left .item:first-child {
+            background: #08a96d;
+            /* 초록색 */
+            color: white;
+            font-weight: bold;
+        }
+        #left .item:first-child:hover {
             background: #08a96d;
             /* 초록색 */
             color: white;
@@ -65,6 +75,10 @@
             /* 남은 공간 채우기 */
             background: white;
             padding: 10px;
+            a {color: black;}
+        }
+        #middle a:hover, #middle a:focus {
+            text-decoration: none;
         }
 
         /* 오른쪽 박스 */
@@ -96,11 +110,11 @@
 
     <div id="container">
         <div id="left">
-            <div class="item">Stylesheet 1</div>
-            <div class="item">Stylesheet 2</div>
-            <div class="item">Stylesheet 3</div>
-            <div class="item">Stylesheet 4</div>
-            <div class="item">No Stylesheet</div>
+            <a class="item" href="style1.html">Stylesheet 1</a>
+            <a class="item" href="style2.html">Stylesheet 2</a>
+            <a class="item" href="style3.html">Stylesheet 3</a>
+            <a class="item" href="style4.html">Stylesheet 4</a>
+            <a class="item" href="nostyle.html">No Stylesheet</a>
         </div>
 
         <div id="middle">
