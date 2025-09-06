@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Masonry Example (No CDN, Pure CSS)</title>
+
+<style>
+  :root{
+    --bg:#21252b;
+    --text:#e6e6e6;
+    --muted:#b9bec7;
+    --card:#2c313a;
+    --card-muted:#9097a1;
+    --primary:#0d6efd;
+    --code-bg:#1b1f24;
+    --code-border:#30363d;
+    --progress-track:#3a3f46;
+    --progress-fill:#9aa1aa;
+  }
+
+  /* Base */
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Arial,Apple Color Emoji,Segoe UI Emoji;
+    line-height:1.6;
+  }
+  a{color:#9ecbff;text-decoration:none}
+  a:hover{text-decoration:underline}
+  .container{max-width:1100px;margin:0 auto;padding:48px 20px}
+
+  h1{margin:0 0 8px}
+  .lead{color:var(--muted);margin:0 0 16px}
+  hr{border:0;border-top:1px solid #3a3f46;margin:28px 0}
+
+  /* --- Code line + thin progress bar --- */
+  .snippet{
+    background:var(--code-bg);
+    border:1px solid var(--code-border);
+    border-radius:10px;
+    padding:14px 16px;
+    overflow:auto;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    color:#c9d1d9;
+    font-size:.95rem;
+  }
+  .snippet code{white-space:pre}
+  .snippet .k{color:#ff7b72}
+  .snippet .a{color:#79c0ff}
+  .snippet .s{color:#a5d6ff}
+
+  .progress-wrap{
+    background:rgba(0,0,0,0.15);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:8px;
+    padding:10px;
+    margin-top:10px;
+  }
+  .progress{
+    width:100%;
+    height:12px;
+    background:var(--progress-track);
+    border-radius:999px;
+    overflow:hidden;
+    box-shadow:inset 0 0 0 1px rgba(0,0,0,.25);
+  }
+  .progress .bar{
+    width:48%;           /* 진행 정도 */
+    height:100%;
+    background:var(--progress-fill);
+    border-radius:999px;
+  }
+
+  /* --- Masonry (pure CSS columns) --- */
+  .grid{
+    column-gap:20px;     /* column 사이 간격 */
+  }
+  /* 반응형 컬럼 수 */
+  @media (min-width:0px){   .grid{column-count:1;} }
+  @media (min-width:576px){ .grid{column-count:2;} }
+  @media (min-width:992px){ .grid{column-count:3;} }
+
+  .grid-item{
+    display:inline-block;     /* columns 안에서 박스로 내려가게 */
+    width:100%;
+    background:var(--card);
+    border-radius:10px;
+    margin:0 0 20px;          /* 아래쪽 간격 (열 간격은 column-gap) */
+    overflow:hidden;
+    box-shadow:0 2px 6px rgba(0,0,0,.35);
+    color:#d9dee6;
+  }
+
+  .grid-item img{display:block;width:100%;height:auto}
+  .card-body{padding:16px}
+  .card-title{margin:0 0 10px;font-size:1.08rem;color:#fff}
+  .card-text{margin:0 0 10px;color:#bfc5ce}
+  .small{opacity:.85;font-size:.85rem}
+  .text-center{text-align:center}
+  .text-end{text-align:right}
+
+  .badge-primary{
+    background:var(--primary);
+    color:#fff;
+    border-radius:10px;
+    padding:18px;
+  }
+
+  /* 회색 placeholder 박스 느낌 */
+  .ph{
+    width:100%;
+    background:#868e96;
+    color:#dee2e6;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:600;
+    letter-spacing:.2px;
+  }
+  .ph.h200{height:200px}
+  .ph.h260{height:260px}
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Bootstrap and Masonry</h1>
+    <p class="lead">
+      Integrate <a href="https://masonry.desandro.com/" target="_blank" rel="noopener">Masonry</a> with the grid and cards.<br>
+      (여긴 **외부 CSS/JS 없이** 우리가 직접 만든 스타일만 사용합니다.)
+    </p>
+
+    <!-- code line -->
+    <div class="snippet" aria-label="Include Masonry via CDN (text only)">
+<code>&lt;<span class="k">script</span> <span class="a">src</span>=<span class="s">"https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"</span> <span class="a">integrity</span>=<span class="s">"sha384-GNFwBvfVxBkLMJpYM0ABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D"</span> <span class="a">crossorigin</span>=<span class="s">"anonymous"</span> <span class="a">async</span>&gt;&lt;/<span class="k">script</span>&gt;</code>
+    </div>
+
+    <!-- thin progress bar -->
+    <div class="progress-wrap">
+      <div class="progress" role="progressbar" aria-valuemin="0" aria-valuenow="48" aria-valuemax="100">
+        <div class="bar"></div>
+      </div>
+    </div>
+
+    <p>By adding <code>data-masonry='{"percentPosition": true }'</code> to the <code>.row</code> wrapper, we can combine the powers of a responsive grid and Masonry’s positioning.</p>
+
+    <hr class="my-5"/>
+
+    <!-- Masonry-like grid (pure CSS columns) -->
+    <div class="grid">
+
+      <!-- 1 -->
+      <div class="grid-item">
+        <div class="ph h200">Image cap</div>
+        <div class="card-body">
+          <h5 class="card-title">Card title that wraps to a new line</h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="grid-item">
+        <div class="card-body">
+          <blockquote class="card-text" style="font-style:italic;margin:0">A well-known quote, contained in a blockquote element.</blockquote>
+          <div class="small">Someone famous in <cite>Source Title</cite></div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="grid-item">
+        <div class="ph h200">Image cap</div>
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          <p class="small">Last updated 3 mins ago</p>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="grid-item text-center">
+        <div class="badge-primary">
+          <blockquote style="font-style:italic;margin:0">A well-known quote, contained in a blockquote element.</blockquote>
+          <div class="small" style="margin-top:8px;">Someone famous in <cite>Source Title</cite></div>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="grid-item text-center">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This card has a regular title and short paragraph of text below it.</p>
+          <p class="small">Last updated 3 mins ago</p>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="grid-item">
+        <div class="ph h260">Card image</div>
+      </div>
+
+      <!-- 7 -->
+      <div class="grid-item text-end">
+        <div class="card-body">
+          <blockquote style="font-style:italic;margin:0">A well-known quote, contained in a blockquote element.</blockquote>
+          <div class="small">Someone famous in <cite>Source Title</cite></div>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="grid-item">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is another card with title and supporting text below. This card has some additional content to make it slightly taller overall.</p>
+          <p class="small">Last updated 3 mins ago</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
