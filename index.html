@@ -1,205 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Developer Sample — Dayeon Jung (22400661)</title>
-  <meta name="description" content="AI-generated developer sample page (assignment)" />
-  <style>
-    :root {
-      /* VS Code Dark Theme Inspired */
-      --bg: #1e1e1e;
-      --panel: #252526;
-      --text: #d4d4d4;
-      --muted: #a0a0a0;
-      --brand: #569cd6;   /* blue */
-      --brand-2: #c586c0; /* pink */
-      --accent-green: #6a9955;
-      --border: #3c3c3c;
-      --code-bg: #1e1e1e;
-      --shadow: 0 4px 12px rgba(0,0,0,.5);
-      --link: #4fc3f7;    /* brighter links for visibility */
-      --link-hover: #ffcc80;
-    }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: Consolas, "Courier New", monospace;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Developer Sample — Dayeon Jung (22400661)</title>
+    <meta name="description" content="OSS assignment developer sample page — Dayeon Jung" />
+    <style>
+        :root {
+            /* VS Code Dark Theme Inspired */
+            --bg: #1e1e1e;
+            --panel: #252526;
+            --text: #d4d4d4;
+            --muted: #a0a0a0;
+            --brand: #569cd6;
+            /* blue */
+            --brand-2: #c586c0;
+            /* pink */
+            --accent-green: #6a9955;
+            --border: #3c3c3c;
+            --shadow: 0 4px 12px rgba(0, 0, 0, .5);
+            --link: #4fc3f7;
+            --link-hover: #ffcc80;
+        }
 
-    /* Links */
-    a:not(.btn) { color: var(--link); text-decoration: underline; }
-    a:not(.btn):hover { color: var(--link-hover); }
+        html,
+        body {
+            height: 100%;
+        }
 
-    .container { width: min(1040px, 92%); margin: 0 auto; }
+        body {
+            margin: 0;
+            font-family: Consolas, "Courier New", monospace;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
 
-    header { position: sticky; top: 0; z-index: 50; background: var(--panel); border-bottom: 1px solid var(--border); }
-    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
-    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
-    .logo { width: 28px; height: 28px; border-radius: 4px; background: var(--brand); color: #fff; display: grid; place-items: center; font-weight: 800; }
-    nav a { color: var(--link); margin-left: 18px; font-weight: 600; text-decoration: underline; }
-    nav a:hover { color: var(--link-hover); }
+        a:not(.btn) {
+            color: var(--link);
+            text-decoration: underline;
+        }
 
-    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border: 1px solid var(--border); border-radius: 6px; color: var(--text); text-decoration: none; font-weight: 600; background: #2d2d2d; }
-    .btn:hover { border-color: var(--brand); color: var(--brand); }
+        a:not(.btn):hover {
+            color: var(--link-hover);
+        }
 
-    .hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 28px; align-items: center; padding: 120px 0 56px; position: relative; }
-    .hero::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 24px; background: var(--brand); }
-    .hero h1 { font-size: clamp(28px, 5vw, 44px); line-height: 1.12; margin: 40px 0 10px; color: var(--brand); }
-    .hero p { color: var(--text); margin: 0 0 22px; }
-    .cta { display: flex; gap: 12px; flex-wrap: wrap; }
-    .pill { padding: 4px 8px; border-radius: 999px; border: 1px solid var(--border); color: var(--accent-green); font-size: 13px; background: #2d2d2d; }
-    .avatar { aspect-ratio: 1; border-radius: 8px; background: #2d2d2d; position: relative; box-shadow: var(--shadow); }
+        .container {
+            width: min(1040px, 92%);
+            margin: 0 auto;
+        }
 
-    section { padding: 28px 0 8px; }
-    .section-title { font-size: 20px; margin: 8px 0 18px; color: var(--brand-2); }
-    .panel { background: #1e1e1e; border: 1px solid var(--border); border-radius: 8px; padding: 18px; box-shadow: var(--shadow); }
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: var(--panel);
+            border-bottom: 1px solid var(--border);
+        }
 
-    .grid { display: grid; gap: 16px; grid-template-columns: repeat(12, 1fr); }
-    .card { grid-column: span 6; background: #252526; border: 1px solid var(--border); border-radius: 8px; padding: 16px; transition: transform .15s ease; }
-    .card:hover { transform: translateY(-2px); border-color: var(--brand); }
-    .card h3 { margin: 6px 0 6px; font-size: 18px; color: var(--brand); }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
-    .tag { font-size: 12px; padding: 4px 8px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); background: #1e1e1e; }
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+        }
 
-    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
-    .skill { padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border); background: #2d2d2d; color: var(--accent-green); }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
 
-    pre { background: #1e1e1e; color: var(--text); padding: 14px; border-radius: 6px; overflow-x: auto; border: 1px solid var(--border); }
-    code { font-family: Consolas, "Courier New", monospace; font-size: 13px; }
+        .logo {
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+            background: var(--brand);
+            color: #fff;
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+        }
 
-    footer { margin: 32px 0 60px; color: var(--muted); font-size: 14px; }
+        nav a {
+            color: var(--link);
+            margin-left: 18px;
+            font-weight: 600;
+            text-decoration: underline;
+        }
 
-    @media (max-width: 860px) {
-      .hero { grid-template-columns: 1fr; }
-      .card { grid-column: span 12; }
-    }
-  </style>
+        nav a:hover {
+            color: var(--link-hover);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            background: #2d2d2d;
+        }
+
+        .btn:hover {
+            border-color: var(--brand);
+            color: var(--brand);
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 28px;
+            align-items: center;
+            padding: 120px 0 56px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 24px;
+            background: var(--brand);
+        }
+
+        .hero h1 {
+            font-size: clamp(28px, 5vw, 44px);
+            line-height: 1.12;
+            margin: 40px 0 10px;
+            color: var(--brand);
+        }
+
+        .hero p {
+            color: var(--text);
+            margin: 0 0 22px;
+        }
+
+        .pill {
+            padding: 4px 8px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            color: var(--accent-green);
+            font-size: 13px;
+            background: #2d2d2d;
+        }
+
+        .avatar {
+            aspect-ratio: 1;
+            border-radius: 8px;
+            background: #2d2d2d;
+            box-shadow: var(--shadow);
+        }
+
+        section {
+            padding: 28px 0 8px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            margin: 8px 0 18px;
+            color: var(--brand-2);
+        }
+
+        .panel {
+            background: #1e1e1e;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .grid {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(12, 1fr);
+        }
+
+        .card {
+            grid-column: span 6;
+            background: #252526;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            transition: transform .15s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: var(--brand);
+        }
+
+        .card h3 {
+            margin: 6px 0 6px;
+            font-size: 18px;
+            color: var(--brand);
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .tag {
+            font-size: 12px;
+            padding: 4px 8px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            color: var(--muted);
+            background: #1e1e1e;
+        }
+
+        footer {
+            margin: 32px 0 60px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        @media (max-width: 860px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                grid-column: span 12;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <header>
-    <div class="container nav">
-      <div class="brand">
-        <div class="logo" aria-hidden="true">&lt;/&gt;</div>
-        <span>Dayeon Jung’s Developer Page <small style="opacity:.6; font-weight:600">(22400661)</small></span>
-      </div>
-      <nav aria-label="Main links">
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container">
-    <section class="hero" id="home">
-      <div>
-        <div class="pill">AI-generated · Single file · Assignment</div>
-        <h1>Hello, I am <span style="color:var(--brand)">Dayeon Jung</span> <span style="font-size:26px">👋</span></h1>
-        <p>I am a frontend learner (HTML · CSS · JavaScript). This page is a <strong>ChatGPT</strong>-generated developer sample, deployed via Netlify.</p>
-        <div class="cta">
-          <a class="btn" href="#projects">View Projects</a>
-          <a class="btn" href="#assign-links">Assignment Links</a>
+    <header>
+        <div class="container nav">
+            <div class="brand">
+                <div class="logo" aria-hidden="true">&lt;/&gt;</div>
+                <span>Dayeon Jung <small style="opacity:.6; font-weight:600">(22400661)</small></span>
+            </div>
+            <nav aria-label="Main links">
+                <a href="#intro">Who I Am</a>
+                <a href="#course">Class Info</a>
+                <a href="#projects">Stuff I Built</a>
+                <a href="#contact">Reach Me</a>
+            </nav>
         </div>
-      </div>
-      <div class="avatar" role="img" aria-label="Decorative avatar graphic"></div>
-    </section>
+    </header>
 
-    <section aria-labelledby="about-title">
-      <h2 id="about-title" class="section-title">About & Code Sample</h2>
-      <div class="panel">
-        <p>The basics of the web are <em>accessibility</em> and <em>semantic markup</em>. This page uses <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, etc. Below is a short JavaScript snippet:</p>
-        <pre><code>// Greeting based on current time
-function greeting(name) {
-  const h = new Date().getHours();
-  if (h < 12) return `Good morning, ${name}!`;
-  if (h < 18) return `Good afternoon, ${name}!`;
-  return `Good evening, ${name}!`;
-}
-console.log(greeting("Dayeon Jung"));</code></pre>
-      </div>
-    </section>
+    <main class="container">
+        <section class="hero" id="intro">
+            <div>
+                <div class="pill">OSS Assignment · Single HTML File</div>
+                <h1>Hi, I’m <span style="color:var(--brand)">Dayeon Jung</span> 👋</h1>
+                <p>I was born on July 3, 2005, and I’m currently a sophomore at Handong Global University.
+                    My focus is on computer science, especially learning the basics of frontend development with HTML,
+                    CSS, and JavaScript.
+                    This page is part of my coursework and also a small step toward building my own portfolio.</p>
+            </div>
+            <div class="avatar"></div>
+        </section>
 
-    <section id="projects" aria-labelledby="projects-title">
-      <h2 id="projects-title" class="section-title">Projects</h2>
-      <div class="grid">
-        <article class="card" aria-labelledby="p1-title">
-          <h3 id="p1-title">W3Schools Demo Style (style1.html)</h3>
-          <p>Based on W3Schools Stylesheet demo, extended from <strong>nostyle.html</strong> to style1.</p>
-          <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Semantic</span></div>
-          <p><a class="btn" href="style1.html">Open</a></p>
-        </article>
-        <article class="card" aria-labelledby="p2-title">
-          <h3 id="p2-title">W3Schools Demo Style (style2.html)</h3>
-          <p>Another stylesheet demo theme applied as the second styled page.</p>
-          <div class="tags"><span class="tag">Flex/Grid</span><span class="tag">Typography</span></div>
-          <p><a class="btn" href="style2.html">Open</a></p>
-        </article>
-        <article class="card" aria-labelledby="p3-title">
-          <h3 id="p3-title">Bootstrap Example (example.html)</h3> 
-          <p>One Bootstrap official example recreated with similar layout and style.</p>
-          <div class="tags"><span class="tag">Bootstrap</span><span class="tag">Responsive</span></div>
-          <p><a class="btn" href="example.html">Open</a></p>
-        </article>
-        <article class="card" aria-labelledby="p4-title">
-          <h3 id="p4-title">Basic Structure Page (nostyle.html)</h3>
-          <p>Plain HTML without styles. Title changed to <em>Welcome to Dayeon Jung’s Homepage (22400661)</em>.</p>
-          <div class="tags"><span class="tag">No CSS</span><span class="tag">Structure</span></div>
-          <p><a class="btn" href="nostyle.html">Open</a></p>
-        </article>
-      </div>
-    </section>
+        <section id="course">
+            <h2 class="section-title">Class Info</h2>
+            <div class="panel">
+                <p>This portfolio is part of Professor Soyeon Jang’s block-plan course: <strong>Open Source Studio & Web
+                        Service Development</strong>.</p>
+                <p>I’m currently focused on building a strong foundation in software and web
+                    development.</p>
+            </div>
+        </section>
 
-    <section id="skills" aria-labelledby="skills-title">
-      <h2 id="skills-title" class="section-title">Skills</h2>
-      <div class="panel">
-        <div class="skills" role="list">
-          <span class="skill" role="listitem">HTML5</span>
-          <span class="skill" role="listitem">CSS3 / Flex / Grid</span>
-          <span class="skill" role="listitem">JavaScript (ES6)</span>
-          <span class="skill" role="listitem">Git / GitHub</span>
-          <span class="skill" role="listitem">Netlify</span>
-          <span class="skill" role="listitem">Bootstrap 5</span>
-        </div>
-      </div>
-    </section>
+        <section id="projects">
+            <h2 class="section-title">Stuff I Built</h2>
+            <div class="grid">
+                <article class="card">
+                    <h3>nostyle.html</h3>
+                    <p>A plain HTML page with zero styling — just raw structure.</p>
+                    <div class="tags"><span class="tag">HTML</span><span class="tag">No CSS</span></div>
+                    <p><a class="btn" href="nostyle.html">Open</a></p>
+                </article>
+                <article class="card">
+                    <h3>style1.html</h3>
+                    <p>The first styled demo, applying basic CSS rules.</p>
+                    <div class="tags"><span class="tag">CSS</span></div>
+                    <p><a class="btn" href="style1.html">Open</a></p>
+                </article>
+                <article class="card">
+                    <h3>style4.html</h3>
+                    <p>A second theme experiment with different typography and layout.</p>
+                    <div class="tags"><span class="tag">CSS</span></div>
+                    <p><a class="btn" href="style4.html">Open</a></p>
+                </article>
+                <article class="card">
+                    <h3>example.html</h3>
+                    <p>A Bootstrap-based responsive example recreated for practice.</p>
+                    <div class="tags"><span class="tag">Bootstrap</span><span class="tag">Responsive</span></div>
+                    <p><a class="btn" href="example.html">Open</a></p>
+                </article>
+            </div>
+        </section>
 
-    <section id="assign-links" aria-labelledby="assign-title">
-      <h2 id="assign-title" class="section-title">Assignment Links</h2>
-      <div class="panel">
-        <ul>
-          <li><a href="nostyle.html">nostyle.html</a></li>
-          <li><a href="style1.html">style1.html</a></li>
-          <li><a href="style2.html">style2.html</a></li>
-          <li><a href="example.html">example.html</a></li>
-          <li><a href="README.md">README.md (on GitHub)</a></li>
-        </ul>
-        <p style="color:var(--muted); margin:.2rem 0 0">These files must exist in the repository for the links to work.</p>
-      </div>
-    </section>
+        <section id="contact">
+            <h2 class="section-title">Reach Me</h2>
+            <div class="panel">
+                <p>📧 <a href="mailto:jyeon573@gmail.com">jyeon573@gmail.com</a></p>
+                <p>💬 KakaoTalk ID: <strong>Ampoule</strong></p>
+            </div>
+        </section>
 
-    <section id="contact" aria-labelledby="contact-title">
-      <h2 id="contact-title" class="section-title">Contact</h2>
-      <div class="panel">
-        <p>Feel free to reach out:</p>
-        <p>
-          📧 <a href="mailto:jyeon573@gmail.com">jyeon573@gmail.com</a>
-          &nbsp;·&nbsp; 🐙 <a href="https://github.com/jyeon573" target="_blank" rel="noopener">github.com/jyeon573</a>
-          &nbsp;·&nbsp; 🌐 <a href="https://your-site.netlify.app" target="_blank" rel="noopener">Netlify Site</a>
-        </p>
-      </div>
-    </section>
+        <footer>
+            <p>© <span id="year"></span> Dayeon Jung (22400661) — OSS Assignment Page</p>
+        </footer>
+    </main>
 
-    <footer>
-      <p>© <span id="year"></span> Dayeon Jung (22400661) — Built with HTML/CSS/JS · Deployed on Netlify</p>
-    </footer>
-  </main>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
+
 </html>
