@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            font-family: "Lucida Sans", Verdana;
+        }
+
+        #box1 {
+            background: linear-gradient(to right, #08a96d 0%, #08a96d 100%);
+            border-radius: 6px;
+            padding: 0.007px 20px;
+            color: white;
+        }
+
+        #box1 h1 {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 큰 박스를 가로로 3등분 */
+        #container {
+            display: flex;
+            /* 원래라면 밑으로 쌓이는데 가로로 배치 */
+            gap: 20px;
+            /* 상자 간의 간격 */
+        }
+
+        /* 왼쪽 박스 */
+        #left {
+            width: 200px;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            /* 상자와 내용물 간의 간격 */
+            gap: 5px;
+            border-radius: 6px;
+        }
+
+        /* 왼쪽 div 안 작은 사각형 5개 */
+        .item {
+            background: #f2f2f2;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 4px 12px;
+            color: black;
+            text-decoration: none;
+        }
+        #left .item:hover{
+            background:#fff;
+        }
+
+        #left .item:first-child {
+            background: #08a96d;
+            /* 초록색 */
+            color: white;
+            font-weight: bold;
+        }
+        #left .item:first-child:hover {
+            background: #08a96d;
+            /* 초록색 */
+            color: white;
+            font-weight: bold;
+        }
+
+
+        /* 가운데 박스 (남은 공간 다 차지) */
+        #middle {
+            flex: 1;
+            /* 남은 공간 채우기 */
+            background: white;
+            padding: 10px;
+            a {color: black;}
+        }
+        #middle a:hover, #middle a:focus {
+            text-decoration: none;
+        }
+
+        /* 오른쪽 박스 */
+        #right {
+            width: 200px;
+            background: #32a4e5;
+            padding: 10px;
+            border-radius: 6px;
+            color: white;
+        }
+
+        /* 마지막 박스 */
+        #last {
+            background: #f2f2f2;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 70%;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1">
+        <h1>Welcome to Dayeon's Homepage (22400661)</h1>
+        <p>Use the menu to select different Stylesheets</p>
+    </div>
+
+    <div id="container">
+        <div id="left">
+            <a class="item" href="style1.html">Stylesheet 1</a>
+            <a class="item" href="style2.html">Stylesheet 2</a>
+            <a class="item" href="nostyle.html">No Stylesheet</a>
+        </div>
+
+        <div id="middle">
+            <h1>Same Page Different Stylesheets</h1>
+            <p>This is a demonstration of how different stylesheets can change the layout of your HTML page. You can
+                change the
+                layout of this page by selecting different stylesheets in the menu, or by selecting one of the following
+                links:<br>
+                <a href="style1.html" target="_blank">Sylesheet1</a>,
+                <a href="style2.html" target="_blank">Sylesheet2</a>.
+            </p>
+            <h2>No Styles</h2>
+            <p>
+                This page uses DIV elements to group different sections of the HTML page. Click here to see how the page
+                looks like
+                with no stylesheet:<br>
+                <a href="nostyle.html" target="_blank">No Stylesheet</a>.
+            </p>
+        </div>
+
+
+        <div id="right">
+            <h3>Side-Bar</h3>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
+                laoreet dolore
+                magna aliquam erat volutpat.<br>
+            </p>
+        </div>
+    </div>
+
+    <div id="last">
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+        euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud
+        exerci
+        tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in
+        hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros
+        et
+        accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla
+        facilisi.
+    </div>
+
+
+</body>
+
+</html>
